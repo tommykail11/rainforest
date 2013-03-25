@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       redirect_to products_path
     else
     	# still the create action, but rendering the new view
+    	@user.errors.delete(:password_digest)
       render :action => :new 
       # goes to the new action, renders the new view
     end

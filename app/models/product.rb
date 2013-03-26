@@ -5,12 +5,13 @@ class Product < ActiveRecord::Base
   validates :price_in_cents, :numericality => {:only_integer => true}
   validates :price_in_dollars, :numericality => true
 
+  has_many :reviews
 
   def price_in_dollars
   	if self.price_in_cents?
-  	self.price_in_cents.to_f / 100 # integer => 2 decimal float
+  	 self.price_in_cents.to_f / 100 # integer => 2 decimal float
+    end
   end
-end
 
   def price_in_dollars=(amount)
   	if amount.present?
